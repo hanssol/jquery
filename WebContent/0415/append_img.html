@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+$(function(){
+	$('#start').on('click',startPro);
+	$('#stop').on('click',stopPro);
+	
+    $('p').click(function() {
+//     	title =$(this).attr('title');
+    	img = $('<img>',{
+    		'width' : '200px',
+    		'height' : '200px',
+    		'src' : '../images/' + $(this).attr('title') +'.gif'
+    	})
+	$(this).append(img);
+	//$(this).after(img);
+    } );
+});
+
+
+function startPro(){
+	
+	$(this).attr('disabled',true);
+	a = setInterval(function(){
+		$('img:first').appendTo('div');
+	},1000);
+}
+
+function stopPro(){
+	$('#start').attr('disabled',false);
+	clearInterval(a);
+}
+</script>
+<style>
+	img {
+		width:250px;
+		height : 200px;
+	}
+
+</style>
+
+</head>
+<body>
+	<div>
+		<img src ="../images/김태리.gif">
+		<img src ="../images/김태리2.gif">
+		<img src ="../images/김태리3.gif">
+		<img src ="../images/민국.gif">
+		<img src ="../images/원진아.gif">
+		<img src ="../images/박보영.gif">
+		<img src ="../images/아이린.gif">
+		<img src ="../images/엠마왓슨.gif">
+		<img src ="../images/한지민.gif">
+		<img src ="../images/한지민2.gif">
+		<img src ="../images/한지민3.gif">
+		<img src ="../images/한지민4.gif">
+	</div>
+	
+	<br><br>
+	
+	<button type = "button" id = "start">시작</button>
+	<button type = "button" id = "stop">종료</button>
+	
+	<br><br>
+	<p title="김태리">김태리</p>
+	<p title="원진아">원진아</p>
+	<p title="박보영">박보영</p>
+	<p title="엠마왓슨">엠마왓슨</p>  
+	
+	
+	
+	
+</body>
+</html>

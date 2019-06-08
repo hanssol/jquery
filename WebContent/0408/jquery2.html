@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- <script src = "../js/jquery-3.3.1.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+
+$(function(){  //window.onload = function(){}
+	
+	//전체p를 선택 - document.getElementsByTagName('p');
+	$('p').css('font-size','1.5em').css('color','red');
+	$('p:eq(0)').css('font-size','1.0em').css('color','black');
+	
+	// id접근
+	// document.getElementByid('p2');
+	$('#p2').on('click',function(){
+		$(this).css('font-size','+=30px');
+		//this.style.fontSize = '30px';
+	});
+})
+
+function proc01(p1){
+	// id접근
+	// document.getElementByid('p1');
+	$('#p1').css('font-size','+=3px');
+	
+	//script코드
+	//p1.style.fontSize = '+=3px';
+	
+}
+
+
+</script>
+</head>
+<body>
+<p>jQuery를 이용하여 document에 접근하기위해서 <br>
+$(function(){})<br>
+window.onload = function(){ }과 같은 기능을 한다.<br>
+<br>
+CDN 방식 : 직접 다운받지 않는다.<br>
+p태그 문장을 클릭하면 글자크기가 커진다.<br>
+태그안에 onclick=proc01(this)코드로 실행<br>
+</p>
+<br>
+<p id="p1" onclick = "proc01(this)">미세먼지 없는 봄날~~1</p>
+<br>
+<p>
+jQuery함수에서 아이디 접근하는 $('#p2').on('click',function() { })<br>
+</p>
+<p id ="p2">미세먼지 없는 봄날~~2</p>
+</body>
+</html>

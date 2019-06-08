@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+$(function(){
+	$('button').on('click',function(){
+		$('div').eq(1).css('border','3px solid green')
+					.siblings('div').css('border','3px solid blue')
+					.end().next().text("세번째 Third")
+					.end().nextAll().css('background','yellow')
+					.end().prev().css('background','green')
+					;
+		
+	})
+})
+</script>
+<style>
+div { 
+	width:150px;
+    height:150px;
+    border:2px solid black; 
+    float : left;
+    margin : 5px;
+    padding : 10px;
+    } 
+	
+</style>
+</head>
+<body>
+<div>a</div> 
+<div>b</div> 
+<div>c</div> 
+<div>d</div> 
+<div>e</div> 
+<div class="orange">f</div> 
+<div>g</div>
+
+<br>
+<br>
+
+<button type="button">버튼</button>
+</body>
+</html>

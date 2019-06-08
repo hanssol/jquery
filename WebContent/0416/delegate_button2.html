@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+$(function(){
+	$(document).on('click','.but',function(){
+		
+		bt = $('<button>',{
+			'type' : 'button',
+			'class' : 'but',
+			'text' : '새로운버튼'
+		})
+		$(bt).appendTo('body');
+	})
+})
+</script>
+
+</head>
+<body>
+<div>
+<button type ="button" class="but" id="btn01" >버튼1</button>
+<button type ="button" class="but"  id="btn02">버튼2</button>
+<button type ="button" class="but"  id="btn03">버튼3</button>
+</div>
+<button type ="button" id="claer">해제</button>
+<hr color="red">
+<div id="result"></div>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+$(function(){
+	$('#sp01').click(function(){
+		$(this).css('background','red');
+		event.stopPropagation();
+	})
+	
+	$('h1').click(function(){
+		$(this).css('background','green');
+	})
+	
+	$('a').click(function(){
+		event.preventDefault();
+		//$(this).off('click');
+		
+	})
+	
+	$('#sp02').click(function(){
+		alert("띵~span");
+		event.stopPropagation();
+	})
+	$('div').click(function(){
+		alert("띵~div");
+		event.stopPropagation();
+	})
+	$('button').click(function(){
+		alert("띵~button");
+		event.stopPropagation();
+	})
+	
+	
+})
+</script>
+<style>
+	div{
+		width :50%;
+		height : 200px;
+		background : pink;
+		margin : 10px;
+	}
+	#sp02{
+		width :50%;
+		height : 100px;
+		background : skyblue;
+		text-align: center;
+		display :block;
+	
+	}
+
+</style>
+</head>
+<body>
+	<h1> 큰제목안에 <span id="sp01"> 작은 영역</span>이 있다</h1> 
+	
+	<br>
+	<br>
+	
+	<div> <span id="sp02">  <button> 클릭하세요</button>  </span></div>
+	<br><hr color="red"><br>
+	<a href="http://www.daum.net">Daum사이트 가기</a>
+	
+</body>
+</html>

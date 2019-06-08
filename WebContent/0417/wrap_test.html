@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+$(function(){
+	$('#wrap').click(function(){
+		$('p').wrap('<div>');
+	})
+	
+	
+	$('#wrapAll').on('click',function(){
+		$('p').wrapAll('<div>');
+	})
+	$('#unwrap').on('click',function(){
+		$('p').unwrap();
+	})
+})
+</script>
+<style>
+	div{
+		width : 80%;
+		height :100px;
+		background : pink;
+	}
+
+</style>
+</head>
+<body>
+	<p>무궁화 꽃이 피었습니다.</p>
+	<h1>asdwqe</h1>
+	<p>진달래 꽃이 피었습니다.</p>
+	<br><br>
+	<button type="button" id="wrap">감싸기</button>
+	<button type="button" id="wrapAll">전체감싸기</button>
+	<button type="button" id="unwrap">해제  </button>
+	
+</body>
+</html>

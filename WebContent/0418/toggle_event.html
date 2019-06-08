@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+$(function(){
+	$('a').click(function(){
+		// a태그의 원래기능은 페이지 이동기능
+		// 페이지 이동 기능의 수행을 막는다.
+		event.preventDefault();
+		
+		$('div').toggle();
+		
+		
+		
+	})
+})
+</script>
+<Style>
+	div{
+		display : none;
+	
+	}
+
+</Style>
+</head>
+<body>
+	<h1>이순신</h1>
+	<a href="http://www.naver.com"> 자세히 보기 </a>
+	<br><br>
+	<div>
+	임진왜란 시기 조선 수군을 이끌고 해상에서 연전연승을 거듭하며 일본군의  <br>
+	보급로를 차단하여 북상을 저지하였다. 적과 싸워 모든 전투에서 최소한의  <br>
+	희생으로 항상 승전을 거두었으며,조정으로부터는 지원은커녕 불합리한 모함과 <br>
+	추궁을 당하였으나 끝까지 충성을 다했으며, 임진왜란 최후의 대전투인 노량 <br>
+	해전에서 장렬한 최후를 맞이했다. <br>
+	</div>
+</body>
+</html>

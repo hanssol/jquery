@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="../css/public.css" type="text/css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		$(function(){
+			$('button').on('click',function(){
+				
+				/*
+				setInterval(function(){
+					
+				$('img').animate({'left' : '+=100' }, 500).delay(500)
+						.animate({'opacity' : '-=0.8' }, 500).delay(500)
+						.animate({'left' : '-=100' }, 500).delay(500)
+						.animate({'opacity' : '+=0.8' }, 500)
+				},2000);
+				*/
+				
+				setInterval(function(){
+					$('#p1').animate({'font-size' : '+=5'}, 500).delay(500)
+					$('#p2').css('font-size','+=5px');
+				},1000);
+				
+				
+			})
+		});
+	</script>
+	<style>
+		img{
+			width : 100px;
+			height : 100px;
+			position : relative;
+		}
+		p{
+			position : relative;
+		}
+	</style>
+</head>
+<body>
+	<button type="button">실행</button>
+	<br>
+	<hr>
+	<img src="../images/단풍.jpg">
+	<br>
+	<br>
+	<p id="p1">진달래 꽃이 피었습니다.</p>
+	<p id="p2">개나리 꽃이 피었습니다.</p>
+					
+</body>
+</html>

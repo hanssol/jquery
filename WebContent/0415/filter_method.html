@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+$(function(){
+	// class 가 intro인 거를 선택 - 노랑배경
+	//$('.intro').css('background','yellow');
+	$('p').filter('.intro').css('background','yellow');
+	// class가 pp인거중 jQuery를 포함하는거를 선택 테두리를 표시
+	$('p').filter('.pp:contains(jQuery)').css('border','2px solid blue');
+	// 홀수번째 요소 중 html이 포함되어 있는 거를 선택 - 글자색을 변경
+	$('p').filter('.pp:odd:contains(Html)').css('color', 'red');
+})
+</script>
+
+</head>
+<body>
+	<h1>*** 환영합니다 ***</h1>
+	<p class ="pp">내 이름은 jQuery 입니다.</p>
+	<p class = "intro">나는 javaScript와 살고 있습니다.</p>
+	<p class = "intro">나는 javaScript를 좋아해요</p>
+	<p class ="pp">내 친구는 Html 입니다.</p>
+</body>
+</html>

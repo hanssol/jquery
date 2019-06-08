@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+$(function(){
+	$('button').on('click',function(){
+		
+		$.ajax({
+			'url' : 'memberList.jsp',
+			type : 'get',
+			success : function(datas){
+				code = "";
+				$.each(datas,function(i,v){
+					code += v.id + "&nbsp;&nbsp;"
+					code += v.name + "&nbsp;&nbsp;"
+					code += datas[i].mail + "&nbsp;&nbsp;"
+					code += datas[i].hp + "<br><br>"
+				})
+				$('#result').html(code);
+			},
+			error : function(status){
+				alert("상태 : " + status);
+			},
+			dataType : 'json'
+			
+			
+		})
+	})
+})
+</script>
+
+</head>
+<body>
+	
+	<button type="button">멤버리스트</button>
+	<br>
+	<hr>
+	<div id="result"></div>
+	
+	
+</body>
+</html>

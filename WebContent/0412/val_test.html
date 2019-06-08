@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+$(function(){
+// 	$('#btnview').on('click',function(){});
+	$('#btnview').on('click',viewPro);
+	
+})
+
+function viewPro(){
+	
+	res="";
+		res += "이름 : " + $('#user').val() + "<br>";
+		res += "성별 : " + $('#gend:checked').val()+"<br>";
+		res += "직업 : " + $('#work option:selected').val() + "<br>";
+		res += "소개 : " + "<br>";
+		res += "<span>" +$('#intro').val().replace(/\n/g,"<br>") + "</span>";
+		
+		//res +=$('#intro').val().replace(/\n/g,"<br>");
+
+	$('#result01').html(res);
+}
+</script>
+<style>
+span {
+	display : inline-block;
+	width : 100%;
+	height : auto;
+	border : 2px solid pink;
+}
+div {
+	overflow: auto;
+	width : 50%;
+	height : 100px;
+	border:1px solid blue;
+}
+</style>
+</head>
+<body>
+	<form>
+	  	<label for="user">이름</label>
+		<input type="text" id="user" value="korea"><br>
+		
+		<label >성별</label> 
+		<input type="radio" id="gend" name="gend" value="남자" checked >남자
+		<input type="radio" id="gend" name="gend" value="여자"  >여자<br>
+		
+	 	<label for="intro">소개</label> 
+		<textarea id="intro" cols="40" rows="4"></textarea> <br>
+		
+	 	<label for="work">직업</label>
+	 	<select id="work">
+		   	<option value="programmer">프로그래머</option>
+		   	<option value="progammer">프로게이머</option>
+		   	<option value="whitehand">백수</option>
+	 	</select><br>
+	 
+		<button type ="button" id="btnview">조사하기 </button>
+		<button type ="button" id="btnchange">이름변경 </button>
+	</form>
+	<div id="result01"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

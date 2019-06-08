@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src = "../js/jquery-3.3.1.min.js"></script>
+<script>
+	$(function(){
+		$('#p1').css('color','red');
+		$('.pp').css('background','skyblue');
+		$('p').css('font-size','1.5em');
+		
+		// 이벤트 등록 -script방식
+		/*
+		plist = document.getElementsByTagName('p');
+		for(i=0;i<plist.length; i++){
+			plist[i].addEventListener('click',proc01);
+		}
+		*/
+		$('p').on('click',function(){
+			$(this).css('font-size','+=5px');
+		});
+		
+		//$('*').css('border','1px solid skyblue');
+		// 여러개를 동시에 선택 , 를 사용
+		$('p, span').css('font-size','2.0em');
+		// 공통된 클래스
+		$('.fp').css('background','pink');
+		
+	})
+	function proc01(){
+		//this.style.fontSize = '50px';
+		$(this).css('font-size','+=5px');
+	}
+
+
+</script>
+</head>
+<body>
+아이디를 이용한선택 - $('#아이디이름') - $('#p2') <br>
+태그이름을 이용한 선택 - $('태그이름') - $('p') <br>
+클래스이름을 이용한 선택 - $('.클래스이름') - $('.p3') <br>
+<br>
+<p class = "fp" id = "p1">무궁화 꽃이 피었습니다.</p>
+<p class = "pp fp">진달래 꽃이 피었습니다.</p>
+<p class = "fp" > 벚꽃이 피었습니다.</p>
+<span class = "fp" >무궁화</span>
+<br>
+<span class = "fp" >진달래</span>
+<span class = "fp" >개나리</span>
+
+
+
+</body>
+</html>

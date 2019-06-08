@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src='../js/jquery-3.3.1.min.js'></script>
+
+<script>
+	$(function(){
+		vdiv = $('<div/>',{
+			'class' :'test',
+			'id' : 'test',
+			'text' : '클릭하세요.',
+			'click' : function(){
+				//alert("클릭");
+				r=Math.floor(Math.random()*256).toString(16);
+				g=Math.floor(Math.random()*256).toString(16);
+				b=Math.floor(Math.random()*256).toString(16);
+				
+				
+				$(this).css('font-size','+=3px').css('color','#'+r+g+b);
+			}
+			
+		});
+		//vdiv.appendTo('body');
+		$('body').appendTo(vdiv);
+	});
+</script>
+
+</head>
+<body>
+script를 통해서 새로운 HTML요소를 만듭니다.<br>
+$('html',{properties})<br>
+<br>
+
+
+
+</body>
+</html>

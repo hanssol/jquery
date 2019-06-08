@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.3.1.min.js"></script>
+
+<script>
+$(function(){
+		$('p').css('color','blue');
+		
+	//conText를 지정한다.
+	$('p',document.forms[1]).css('font-size','1.5em');
+	
+	$('div').click(function(){
+		
+		r = Math.floor(Math.random()*256);
+		g = Math.floor(Math.random()*256);
+		b = Math.floor(Math.random()*256);
+		
+		r = r.toString(16);
+		g = g.toString(16);
+		b = b.toString(16);
+		
+		$('p',this).css('color','#'+r+g+b)
+	});
+	
+});
+</script>
+
+
+</head>
+<body>
+<form>
+	<div>
+		<p>무궁화 꽃이 피었지</p>
+	</div>
+</form>
+
+<form>
+	<p>진달래 꽃이 피었네</p>
+</form>
+
+<form>
+	<div>
+		<p>개라니 꽃이 피었구나</p>
+	</div>
+</form>
+
+</body>
+</html>

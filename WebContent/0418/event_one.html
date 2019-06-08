@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+$(function(){
+	
+	/*
+	// p태그의 이벤트 설정
+	$('p').bind('click',function(){ 
+		$(this).css('font-size','+=3px');
+	})
+	//$('p').on('click',function(){})
+	//$('p').click(function(){})
+	
+	// p태그에 대한 클릭이벤트 해제
+	$('button').on('click',function(){
+		//$('p').off('click');
+		$('p').unbind('click');
+	})
+	*/
+	
+	
+	// one : 이벤트를 한번만 실행하고 자동으로 이벤트 핸들러(기능)가 삭제 된다.
+	$('p').one('click',function(){
+		$(this).css('font-size','+=3px');
+	})
+	
+	
+	
+	
+	
+	
+	
+	
+	
+})
+</script>
+
+</head>
+<body>
+	<p>진달래꽃이 피었습니다.</p>
+	
+<button type="button">해제</button>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src = "../js/jquery-3.3.1.min.js"></script>
+
+<script>
+imgarr = ["민국.gif","박보영.gif","박보영.jpg","김태리.gif","김태리2.gif","김태리3.gif","아이린.gif","한지민.gif"
+          ,"한지민2.gif","한지민3.gif","한지민4.gif","한지민5.gif"];
+
+	$(function(){
+		$('button').click(function(){
+			//alert('클릭');
+			rand = Math.floor(Math.random()*imgarr.length);
+			img = $('<img>',{
+				
+				'whith' : '200px',
+				'height' : '200px',
+				'src' : '../images/'+ imgarr[rand],
+				'title' : function(){
+					attr = this.getAttribute('src');
+					start =attr.lastIndexOf('/');
+					end = attr.lastIndexOf('.');
+					res = attr.substring(start+1,end);
+					
+					
+					return res;
+				},
+				'click' : function(){
+						$(this).css('border','2px solid pink');
+					}
+				
+			})
+		img.appendTo('body');
+		})
+	})
+
+</script>
+
+</head>
+<body>
+이미지추가버튼을 클릭하면 새로운 이미지태그를 생성한다 <br>
+새로운 이미지를 클릭하면 이미지의 테두리를 설정한다 <br>
+<br>
+
+<button type = "button">이미지추가</button>
+</body>
+</html>

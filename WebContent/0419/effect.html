@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+$(function(){
+	
+	$('#showsw').click(function(){
+		$('#img1').show(2000,'swing',function(){
+			alert("숲으로 가자!");
+		});
+	})
+	
+	$('#showli').click(function(){
+		$('#img1').show(2000,'linear');
+		alert("숲으로 가자!");
+	})
+	
+	$('#hide').click(function(){
+		$('#img1').hide(500,function(){alert("숲이 사라졌어");});
+		
+	})
+	
+	$('#toggle').click(function(){
+		$('#img1').toggle(1000);
+	})
+	
+	$('#up').on('click',function(){
+         $('#img2').slideUp(1000,'swing');
+      })
+      
+      $('#down').on('click',function(){
+         $('#img2').slideDown();
+      })
+      
+      $('#stoggle').on('click',function(){
+         $('#img2').slideToggle();
+      })
+	
+      $('#fin').click(function(){
+    	  $('#img3').fadeIn(500,'swing');
+      })
+      
+      $('#fout').click(function(){
+    	  $('#img3').fadeOut(500);
+      })
+      
+      $('#ftoggle').click(function(){
+    	  $('#img3').fadeToggle(1000);
+      })
+      
+      $('#fto').click(function(){
+    	  $('#img3').fadeTo(1000,1.0);
+      })
+	
+})
+</script>
+<style>
+	img{
+		display:none;
+	}
+</style>
+</head>
+<body>
+
+<button id="showsw" type="button">showswing</button>
+<button id="showli" type="button">showlinear</button>
+<button id="hide" type="button">hide</button>
+<button id="toggle" type="button">toggle</button>
+<br>
+<br>
+<img id="img1" src="../images/원진아.gif">
+<hr>
+
+<button id="up" type="button">slideup</button>
+<button id="down" type="button">slidedown</button>
+<button id="stoggle" type="button">slidetoggle</button>
+<br>
+<br>
+<img id="img2" src="../images/원진아.gif">
+<hr>
+
+<button id="fin" type="button">fadein</button>
+<button id="fout" type="button">fadeout</button>
+<button id="ftoggle" type="button">fadetoggle</button>
+<button id="fto" type="button">fadeto</button>
+<br>
+<br>
+<img id="img3" src="../images/원진아.gif">
+<hr>
+
+
+</body>
+</html>

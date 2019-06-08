@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="../js/jquery.serializejson.min.js"></script>
+<style>
+ .ziptr:hover{
+    background : crimson;
+ }
+</style>
+<script>
+ $(function(){ 
+	
+    //가입하기 
+    $('#joinbtn').on('click',function(){
+    	dataval = $('#ff').serializeJSON();
+    	console.log(dataval);
+    	
+    	 $.ajax({
+             url : 'join.jsp',
+             type : 'post',
+             data : { "id" : idvalue , "name" : namevalue , 
+                      "mail" : mailvalue, "pass" : passvalue, 
+                      "zip": zipvalue , "add1" : add1value,
+                      "add2" : add2value
+                   },
+             success : function(datas){
+                code = "";
+                    if(datas.sw == "OK"){
+                      code += datas.id + "님 가입성공" ;
+                    }else{
+                      code += datas.id + "님 가입실패" ; 
+                    }
+                    $('#subspan').html(code).css('color', 'red');
+             },
+              error : function(xhr){
+                  alert("상태 : " + xhr.status)
+               },
+               dataType : 'json'
+          })
+           
+       })
+   
+    
+    
+      /*
+    $('#joinbtn').on('click', function(){
+      //입력한 모든 값을 가져온다 
+      idvalue =  $('#id').val() ;
+      namevalue= $('#nmae').val() ;
+      mailvalue= $('#email').val() ;
+      passvalue= $('#pwd').val() ;
+      zipvalue=  $('#zip').val() ;
+      add1value= $('#add1').val() ;
+      add2value =$('#add2').val() ;
+   
+      
+      
+      ////////공백검증, 데이타 규칙(정규식) 검사 
+      
+      $.ajax({
+         url : 'join.jsp',
+         type : 'post',
+         data : { "id" : idvalue , "name" : namevalue , 
+                  "mail" : mailvalue, "pass" : passvalue, 
+                  "zip": zipvalue , "add1" : add1value,
+                  "add2" : add2value
+               },
+         success : function(datas){
+            code = "";
+                if(datas.sw == "OK"){
+                  code += datas.id + "님 가입성공" ;
+                }else{
+                  code += datas.id + "님 가입실패" ; 
+                }
+                $('#subspan').html(code).css('color', 'red');
+         },
+          error : function(xhr){
+              alert("상태 : " + xhr.status)
+           },
+           dataType : 'json'
+      })
+       
+    })
+    
+       */
+    //우편번호검색 
+    $('#dongbtn').on('click', function(){
+       //공백검증 
+         //변수 =입력한 값을 가져온다 
+         dongvalue = $('#dong').val()
+         //값이 입력되었는지 안 되었는지 비교
+        //입력이 안되었으면 다시 시작하고
+        if(dongvalue.trim().length <= 0){
+           alert("동을 입력하세요");
+           return;
+        }
+        //입력되었으면 
+        $.ajax({
+           url : 'zipcode.jsp',
+           data : { "dong1" : dongvalue },
+           type : 'post',
+           success : function(datas){
+             code = "<table class='table table-bordered' >";
+             code +=  "<tr><td>우편번호</td><td>주소</td><td>번지</td></tr>"
+             $.each(datas, function(i,v){
+                code += "<tr class='ziptr'>";
+                code += "<td>" + datas[i].code + "</td>"  ;
+                code += "<td>" + datas[i].addr + "</td>"  ;
+                code += "<td>" + datas[i].bunji + "</td>"  ;
+                code += "</tr>";
+             })
+             code += "</table >";
+             
+             $('#result').html(code);
+           },
+           error : function(xhr){
+              alert("상태 : " + xhr.status)
+           },
+           dataType : 'json'
+        })
+    })
+    
+    //우편번호 검색시 하나를 선택하면 
+    //.ziptr은 새로 생성된 요소이기때문에 delegete방식으로 이벤트를 부여한다 
+    $('#result').on('click', '.ziptr',  function(){
+       
+         zcode = $('td:eq(0)', this).text();
+         addr = $('td:eq(1)', this).text();
+         
+         $('#zip').val(zcode);
+         $('#add1').val(addr);
+         
+         //modal창닫기 
+         $('#myModal').modal('hide');
+    })
+    //modal창닫기 이벤트 
+    $('#myModal').on('hide.bs.modal', function(){
+       $('#result').empty();
+       $('#dong').val("");
+    })
+    
+    //id중복 검사 
+     $('#idbtn').on('click', function(){
+        //공백검증 
+        //변수 =입력한 값을 가져온다 
+        idvalue = $('#id').val();
+       
+        //값이 입력되었는지 안 되었는지 비교
+        //입력이 안되었으면 다시 시작하고 
+        if(idvalue.trim().length  <= 0){
+           alert("id를 입력하세요");
+           return ;
+        }
+        
+        //입력이 되었으면 
+        $.ajax({
+           url : 'idcheck.jsp',
+           data : {"id" : idvalue},
+           type : 'post',
+           success : function(datas){
+              code = "";
+              if(datas.sw == "OK"){
+                code += datas.id + "는 사용가능 아이디" ;
+              }else{
+                code += datas.id + "는 사용 불가능 아이디" ; 
+              }
+              $('#idspan').html(code).css('color', 'red');
+           },
+           error : function(xhr){
+              alert("상태 : " + xhr.status)
+           },
+           dataType : 'json'
+        })
+     
+     })
+ })
+</script>
+</head>
+<body>
+<div class="container">
+  <h2>회원가입</h2>
+  <form class="form-horizontal"  action="member.jsp">
+  
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="id">아이디</label>
+    <div class="col-sm-3">
+      <input type="text" name="mem_id"  class="form-control" id="id" placeholder="Enter id">
+    </div>
+    <button id="idbtn" type="button" class="btn btn-success btn-md">중복검사</button>
+    <span id="idspan"></span>
+  </div>
+  
+   <div class="form-group">
+    <label class="control-label col-sm-2" for="name">이름</label>
+    <div class="col-sm-3">
+      <input type="text" name="mem_name" class="form-control" id="name" placeholder="Enter name">
+    </div>
+  </div>
+  
+  
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="email">Email:</label>
+    <div class="col-sm-3">
+      <input type="email" name="mem_mail" class="form-control" id="email" placeholder="Enter email">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="pwd">Password:</label>
+    <div class="col-sm-3"> 
+      <input type="password"  name="mem_pass" class="form-control" id="pwd" placeholder="Enter password">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="zip">우편번호</label>
+    <div class="col-sm-3">
+      <input type="text" name="mem_zip" class="form-control" id="zip" placeholder="Enter zip">
+    </div>
+    <button type="button"   data-toggle="modal" data-target="#myModal" class="btn btn-success btn-md">번호검색</button>
+  </div>
+  
+  
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="add1">주소</label>
+    <div class="col-sm-5">
+      <input type="text" name="mem_add1" class="form-control" id="add1" placeholder="Enter add1">
+    </div>
+  </div>
+  
+   <div class="form-group">
+    <label class="control-label col-sm-2" for="add2">상세주소</label>
+    <div class="col-sm-5">
+      <input type="text" name="mem_add2" class="form-control" id="add2" placeholder="Enter add2">
+    </div>
+  </div>
+  
+  
+  <div class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-10">
+      <button id="joinbtn" type="button" class="btn btn-primary btn-lg">Submit</button>
+      <span id="subspan"></span>
+    </div>
+  </div>
+</form>
+</div>
+
+<br>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">우편번호검색</h4>
+      </div>
+      <div class="modal-body">
+        동입력 
+        <input type="text" id="dong">
+        <input type="button" id="dongbtn" value="검색"><br><br>
+        <div id="result"></div> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

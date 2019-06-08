@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+$(function(){
+	/*
+	$('img').click(function(){
+		
+		rand = Math.floor(Math.random()*5+5);
+		
+		res = rand+"%";
+		//alert(res);
+		p = $('<p/>');
+	
+		p.appendTo('img');
+		$(this).append(res);
+		})	
+	*/
+	$('img').hover(function(){
+		$(this).addClass('imgborder');
+	},function(){
+		$(this).removeClass('imgborder');
+	})
+	
+	$('.guess_box').one('click',function(){
+		rand = Math.floor(Math.random()*6+5);
+		$('#pg').remove();
+		// ptag = "<p id='pg'> 할인율 : " + rand +"%</p>"
+		ptag =$('<p>',{
+			'text' : '할인율' + rand +"%",
+			'id' : 'pg',
+		})
+		$(this).append(ptag);
+	})
+	
+})
+
+</script>
+<style>
+	img{
+		width : 100px;
+		height : 100px;
+		display: block;
+    	float: left;
+	}
+	.imgborder{
+		border:2px solid blue;
+	}
+
+</style>
+</head>
+<body>
+<div id="header">
+   <h2> Jump for Joy Sale </h2>
+</div>
+<div id="main">
+   <div class="guess_box"><img src="../images/풍차.jpg" /></div>
+   <div class="guess_box"><img src="../images/대나무숲.jpg" /></div>
+   <div class="guess_box"><img src="../images/산.png" /></div>
+   <div class="guess_box"><img src="../images/셔틀콕.jpg" /></div>
+</div>
+
+</body>
+</html>

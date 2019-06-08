@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+$(function(){
+	$('#area').keyup(function(){
+		
+		//입력한값을 가져와서 길이를 구한다.
+		//전체길이(100) 입력한 값의 길를 뺀다.
+		
+		leng = $(this).val().length;
+		leng = 100-leng;
+		
+		//뺀결과가 0보다 작거나 같으면 더이상 입력이 안된다.
+		if(leng <= 0){
+		//disabled또는 readonly 속성을 true로 설정한다. -prop()
+		$(this).prop('disabled',true);
+		}
+		
+		//span에 출력
+		
+		$('span').text(leng);
+		
+	})
+})
+</script>
+
+</head>
+<body>
+남기고 싶은 글자를 입력하세요.(100글자)<br><br>
+<textarea id="area" rows="10" cols="50"></textarea>
+<br>
+<br>
+<p>남은 글자수 : <span>100</span></p>
+
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="../js/jquery.serializejson.min.js"></script>
+  <script src="../js/board.js"></script>
+  <script>
+     readServer(1);
+     reply ={ }; // 객체 - 동적으로 속성이나 함수를 추가 할 수 있다.
+     
+     
+     
+     $(function() {
+        $('#pagelist').on('click', '.paging', function(obj) {
+           num = $(this).text();
+           currentPage=num;
+           readServer(num);
+        })
+        $('#writeOk').click(function(){
+        	
+        	//전체 입력받은 값을 가져온다.
+        	inputs = $('#writeForm').serializeJSON();
+        	$.ajax({
+        		url : 'write.jsp',
+        		type : 'post',
+        		data : inputs,
+        		success : function(datas){
+        			$('#writeModal').modal('hide');
+        			readServer(1);
+        		},
+        		error : function(xhr){
+        			alert("상태 : " + xhr.status);
+        		},
+        		dataType : 'json'
+        		
+        	})
+        })
+        
+        //modal창단기 이벤트
+        $('#myModal').on('hide.bs.modal', function() {
+         $('#writeForm.txt').val("");
+      })
+      
+      // 댓글등록버튼 클릭하면 -delegate방식이용
+      $('.container').on('click','.action',function(){
+    	  actionname = $(this).attr('name');
+    	  idx =$(this).attr('idx'); //board1 테이블의 seq값
+    	  
+    	  if(actionname == 'reply'){
+    		  //alert("댓글");
+    		  text = $(this).parent().find('.area').val();
+    		 // alert(text);
+    		 reply.name ="chihao";
+    		 reply.bonum = idx;
+    		 reply.cont = text;
+    		 
+    		  replyServer();
+    		  
+    		  
+    		  
+    	  }else if(actionname == 'delete'){
+    		  alert("글삭제");
+    		  
+    	  }else if(actionname == 'modify'){
+    		  alert("글수정");
+    		  
+    	  }
+      })
+      
+   })
+  </script>
+  
+  <style type="text/css">
+  #writebtn{
+     margin-left: 80%;
+  }
+  </style>
+</head>
+<body>
+<h2>Accordion 게시판</h2>
+<br>
+<br>
+<button type="button" id="writebtn" class="btn btn-info" data-toggle="modal" data-target="#writeModal" >글쓰기</button>
+<br><br>
+
+<div class="container">
+
+  <h2>Accordion Example</h2>
+ </div>
+ <br>
+ <div id="pagelist"></div>
+ <br>
+    <div id="writeModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+         <!-- Modal content-->
+         <div class="modal-content">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <h4 class="modal-title">글쓰기</h4>
+            </div>
+            <div class="modal-body">
+            <form id="writeForm">
+               제목 : <input type="text" class="txt" id="subject" name ="subject"><br> 
+               이름 : <input type="text"  class="txt" id="writer" name="writer"><br>
+               메일 : <input type="text"  class="txt" id="mail" name="mail"><br>
+               비밀번호 : <input type="password"  class="txt" id="password" name="password"><br>
+               본문 <br> 
+               <textarea rows="10" cols="50"  class="txt" id="content" name="content"></textarea><br>
+               <button type="button" class="btn btn-info" id="writeOk">확인</button>
+            </form>
+               
+               
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+         </div>
+
+      </div>
+   </div>
+ 
+ 
+ 
+    
+</body>
+</html>

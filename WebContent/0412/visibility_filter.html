@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+$(function(){
+	res = "";
+	
+	$('#but01').on('click',function(){
+		res = "*:hidden 인 내용 <br>";
+		$('*:hidden').each(function(i){
+			res += i + "번째 : " + this.tagName + "<br>";
+		})
+		$('#result01').html(res);
+	})
+	
+	$('#but02').on('click',function(){
+		res = "*:visible 인 내용<br>";
+		$('*:visible').each(function(i,v){
+			res += i + "번째 : " + v.tagName + "<br>";
+		})
+		$('#result02').html(res);
+	})
+	
+	$('#but03').on('click',function(){
+		res = "p:hidden 이 내용<br>";
+		$('p:hidden').each(function(i){
+		res += i + "번쨰 : " + this.tagName + "" + $(this).text() + "<br>";
+		//res += i + "번쨰 : " + this.tagName + "" + this.textContent + "<br>";
+		})
+		$('#result03').html(res);
+	})
+	
+	$('#but04').on('click',function(){
+		res = "p:visible 인 내용<br>";
+		
+		$('p:visible').each(function(i){
+			res += i + "번쨰 : " + this.tagName + "" + $(this).text() + "<br>";
+		})
+		$('#result04').html(res);
+	})
+	
+	
+	
+	
+})
+</script>
+<style>
+
+	div {
+	
+	width : 100%;
+	height : auto;
+	border:1px solid blue;
+}
+
+
+
+</style>
+
+</head>
+<body>
+	<p> 보이는 문단</p>
+	<p style="visibility:hidden;">숨겨진 문단</p>
+	<p style="display:none;"> 자리를 차지 하지 못한 문단 </p>
+	<p style="opacity:0;"> 투명한 문단</p>
+	<br>
+	*:hidden -> 안보이는 모든것 <br>
+	<button type ="button" id = "but01">실행</button>
+	<div id ="result01"></div>
+	<br><br>
+	*:visible -> 보이는 모든것<br>
+	<button type ="button" id = "but02">실행</button>
+	<div id ="result02"></div>
+	<br><br>
+	
+	p:hidden -> 안보이는 p요소<br>
+	<button type ="button" id = "but03">실행</button>
+	<div id ="result03"></div>
+	<br><br>
+	
+	p:visible -> 보이는 p요소 <br>
+	<button type ="button" id = "but04">실행</button>
+	<div id ="result04"></div>
+</body>
+</html>

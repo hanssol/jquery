@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
+<script>
+	$(function(){
+		//h3 다음의 모든 형제의 배경색을 변경, 길이지정, 가운데 정렬
+		$("h3 ~p").css({background:"yellow", textAlign:"center"});
+		//h3 다음의 첫번째 형제의 글자를 굵게
+		$("h3 +p").css({fontWeight:"bold"});
+		
+		//$(".btn_cancel").click(proc1);
+		document.getElementsByTagName("button")[0].addEventListener("click", proc1);
+	});
+	
+	function proc1(){
+		$("h3 +p").css({background:"pink", textAlign:"right"});
+	}
+</script>
+
+</head>
+<body>
+	<div class="wrap">
+		<fieldset>
+			<legend>BASE FILTER</legend>
+			<p><span>sdfsdfsdf</span></p>
+			<div class="classWrap">
+				<p>형제 선택자에 대하여</p>
+				<h3>텔레토비 가족을 소개합니다.</h3>
+				<p>보라돌이</p>
+				<p>뚜비</p>
+				<p>나나</p>
+				<p>뽀</p>
+				<button type="button" class="btn_cancle">쿠림순</button>
+			</div>
+		</fieldset>
+	</div>
+</body>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.3.1.min.js" type="text/javascript"></script>
+<script>
+   $(function(){
+      //delegate 방식 기존버튼, 새로운 버튼 둘다 이벤트 적용
+//       $('div').on('click','.but', function(){
+//          $(this).clone().appendTo('#result');
+//       })
+      
+      //bind 방식이지만 clone(true)를 써줘서 이벤트 적용
+//       $('.but').on('click',function(){
+//          $(this).clone(ture).appendTo(#result);
+//       })
+      
+      //bind 방식
+      //$('.but').on('click', function(){
+      //btag = '<button class="but" type="button"> 새로운 버튼 <button>'
+//          btag = $('<button>',{
+//             'type' : 'button',
+//             'class': 'but',
+//             'text' : '새로운버튼' 
+//          })
+//          $(btag).appendTo('#result');
+//       })
+      
+      //clone()사용하지 않고 새로운 버튼을 생성 delegate 사용!
+      count = 0;
+      $('div').on('click','.but', function(){
+         count ++;
+         //btag = '<button class="but" type="button"> 새로운 버튼 <button>'
+         btag = $('<button>',{
+            'type' : 'button',
+            'class': 'but',
+            'text' : '어허..오호..아하..' + count
+         })
+         $(btag).appendTo('#result');
+      })
+      //셋다 같은말
+      $('#clear').bind('click',function(){
+         $('div').undelegate('click'); 
+//          $('div').off('click');
+      })
+      
+//       $('#clear').on('click',function(){ })
+//       $('#clear').click(function(){ })
+      
+});
+</script>
+<style>
+#fs {
+   border : 2px solid red;
+   margin: 0 auto;
+   width: 300px;
+   height : 100px;
+}
+</style>
+</head>
+<body>
+<fieldset id="fs">
+   <legend>bind vs delegate</legend>
+   <div>
+      <button class="but" type="button"> 어허... </button>
+      <button class="but" type="button"> 오호... </button><br>
+   </div><br>
+      <button id="clear" type="button"> 아하... </button>
+   
+   
+</fieldset>
+
+<fieldset id="fs">
+   
+   <div id="result"></div>
+   
+
+</fieldset>
+
+
+
+</body>
+</html>

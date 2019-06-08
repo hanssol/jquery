@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src = "../js/jquery-3.3.1.min.js"></script>
+<script >
+	$(function(){
+		//$('p').on('click',function(){ });
+		$('p').click(function(){ 
+			//$(this).hide();
+			//this.style.display = "none";
+			$(this).css('display','none');
+			
+			// 다사라지면 버튼이 나타난다
+			// 다사라졌는지? 보이는 갯수가 0개인지?
+			if($('p:visible').length == 0){
+				// 방법 1
+				//$('button').show();
+				// 방법 2
+				$('button').css('display','block');
+			}
+		});
+	$('button').click(function(){
+		$('p').show();
+		$(this).hide();
+	})		
+		
+	})
+</script>
+<style>
+	p{
+		font-size:1.5em;
+	}
+	
+	button{
+		display : none;
+	}
+</style>
+</head>
+<body>
+<p>클릭하면 사라집니다.1</p>
+<p>클릭하면 사라집니다.2</p>
+<p>클릭하면 사라집니다.3</p>
+<p>클릭하면 사라집니다.4</p>
+<p>클릭하면 사라집니다.5</p>
+<p>클릭하면 사라집니다.6</p>
+<p>클릭하면 사라집니다.7</p>
+<p>클릭하면 사라집니다.8</p>
+<p>클릭하면 사라집니다.9</p>
+<p>클릭하면 사라집니다.10</p>
+<p>클릭하면 사라집니다.11</p>
+
+<br>
+
+<button type = "button">보이기</button>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+$(function(){
+	$('a').click(function(){
+		
+		event.preventDefault();
+		
+			// a태그의 href속성값을 가져온다.
+			a = $(this).attr('href');
+			
+			/*
+			$('img').fadeOut(1000);
+			// img의 src속성값을 바꿔라
+			 $('img').attr('src',a);
+			// 이미지가 나타난다.
+			$('img').fadeIn();
+			*/
+		
+		$('img').fadeOut(1000,function(){
+			// img의 src속성값을 바꿔라
+			 $('img').attr('src',a);
+			// 이미지가 나타난다.
+			$('img').fadeIn();
+			
+		})
+		
+	})
+})
+</script>
+<style>
+img{
+	width : 150px;
+	height : 200px;
+}
+
+</style>
+</head>
+<body>
+	<h2>교재목록</h2>
+	<br>
+	<ul>
+		<li> <a href="../images/jQuery.jpg">jQuery교재</a></li>
+		<li> <a href="../images/JSP2_1.jpg">JSP교재</a></li>
+		<li> <a href="../images/UML.jpg">UML교재</a></li>
+	</ul>
+	<br>
+	<br>
+	<img src="../images/noImage.png">
+	
+</body>
+</html>

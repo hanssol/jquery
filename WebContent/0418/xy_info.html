@@ -1,0 +1,38 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+$(function(){
+	// 마우스를 움직이면 좌표값을 얻어서 div에 출력하시오.
+	$(document).mousemove(function(ee){
+		res = "X좌표 : " + ee.pageX +", Y좌표 : "+ee.pageY;
+		
+		$('div').html(res);
+		
+		// 좌표값이 x = 100  y = 100 이면 이미지를 추가하시오.
+		if(ee.pageX==100 && ee.pageY==100){
+			img = $('<img>',{
+				'width' : '200px',
+				'heigth' : '180px',
+				'src' : '../images/원진아.gif'
+			})
+		}
+		img.appendTo('body');
+	
+	})
+})
+</script>
+<style>
+	div{
+		height : 50px;
+	}
+</style>
+</head>
+<body>
+	<div id="log"></div>
+</body>
+</html>

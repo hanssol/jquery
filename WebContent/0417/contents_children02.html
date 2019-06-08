@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+$(function(){
+	$('#cont').on('click',function(){
+		$('.d1').contents().wrap('<strong/>').end().css('color','skyblue');
+		//$('.d1').contents().wrap('<strong/>');
+		//$('.d1').contents().css('color','skyblue');
+	})
+	// 태그가 없는 자식을 대상으로 글자색을 빨강
+	$('#notag').on('click',function(){
+		$('.d2').contents().each(function(i){
+			if(typeof this.tagName =='undefined'){
+				if($(this).text().trim().length>0){
+					$(this).parent().css('color','red');
+				}
+			}
+		})
+	})
+	
+	// 태그가 있는 것을 대상으로 실행한다.
+	$('#childem').on('click',function(){
+		/*
+		$('.d3').children().each(function(){
+			if(this.tagName =='EM'){
+				$(this).css('font-size','1.5em');
+			}
+		})
+		*/
+		
+		$('.d3').children().filter('em').css('font-size','1.5em');
+	})
+	
+	$('#and').on('click',function(){
+		$('h1').add($('h2')).css('color','green');
+	})
+	
+})
+</script>
+
+</head>
+<body>
+	
+	<strong>태그가 있거나 없거나 모든 자식을 대상으로 실행</strong>
+	버튼을 클릭하면 em태그 포함상관없이 모든 문장을 strong태그로 감싸고<br>
+	글자색을 파란색으로 변경한다.<br>
+	<div class="d1"><em>Hello~~~ World!! 아름다운 봄입니다. EM태그가 포함</em></div>
+	<div class="d1">Hello~~~ World!! 아름다운 봄입니다. EM태그가 없음</div>
+	<button id="cont">contents</button>
+	<br>
+	<br>
+	<strong>태그가 없는 자식을 대상으로 글자색을 빨강으로 변경 실행</strong>
+	<div class="d2"><em>Hello~~~ World!! 아름다운 봄입니다. EM태그가 포함</em></div>
+	<div class="d2">Hello~~~ World!! 아름다운 봄입니다. EM태그가 없음</div>
+	<button id="notag">contents(태그가 없는것만)</button>	
+	
+	<br>
+	<br>
+	<strong>태그가 있는 자식만을 대상으로 실행</strong>	
+	<br>
+	<br>
+	<div class="d3"><em>Hello~~ EM 봄꽃이 EM으로 휘날리고 있어요!</em></div>
+	<div class="d3"><span>Hello~~ SPAN 봄꽃이 SPAN으로 휘날리고 있어요!</span></div>
+	<div class="d3"><span>Hello~~ SPAN <em>봄꽃이 SPAN으로 휘날리고 있어요!</em></span></div>
+	<br>
+	<br>
+	<button type="button" id="childem">children(em태그가 포함된 자식)</button>
+	<button type="button" id="find">find(em태그가 포함된 후손)</button>
+	<br>
+	<br>
+	and() : 여러개의 요소를 동시에 선택한다 <br>
+	$('h1,h2') : h1과 h2를 동시에 선택
+	<h1>Hello</h1>
+	<h2>Hello</h2>
+	<button type="button" id="and">동시선택</button>
+	
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src ="../js/jquery-3.3.1.min.js"></script>
+
+<script>
+	$(function(){
+		// dom요소
+		vp1 = document.getElementsByTagName('p')[0];
+		vp1.style.background = 'pink';
+		
+		// dom객체요소가 css jQeury메소드를 사용할 수 없다.
+		//vp1.css('font-size','2.0em');
+
+		// dom객체요소에 $()로 감싸주면 jQuery객체로 변환되어
+		// css jQuery메소드를 사용할 수 있다.
+		$(vp1).css('font-size','2.0em');
+		
+		
+		//jQuery객체
+		vp2 = $('p:eq(1)');
+		vp2.css('font-size','2.0em');
+		
+		// jQuery객체로 부터 dom객체를 얻기
+		vp3 = $('p')[1]; //[1]을 붙여서 dom객체가 된다.
+		vp3.style.color = 'red';
+		//vp3.css('color','red');// dom객체가 되었기때문에 실행이 안된다.
+		//$(vp3).css('color','red'); //$()를 붙여줘서 jQeury객체로 변경해주면 실행이 된다.
+	})
+</script>
+<style>
+	pre{
+	font-size : 1.5em;
+	}
+</style>
+
+</head>
+<body>
+<pre>
+	dom요소
+		vp1 = document.getElementsByTagName('p')[0];
+		vp1.style.background = 'pink';
+		
+		<strong>dom객체요소가 css jQeury메소드를 사용할 수 없다.</strong>
+		vp1.css('font-size','2.0em');
+
+		<strong>dom객체요소에 $()로 감싸주면 jQuery객체로 변환되어
+		css jQuery메소드를 사용할 수 있다.</strong>
+		$(vp1).css('font-size','2.0em');
+		
+		
+		<strong>jQuery객체</strong>
+		vp2 = $('p:eq(1)');
+		vp2.css('font-size','2.0em');
+		// vp2.style.color = 'red'; //jQuery객체는 dom스타일로 할 수 없다.
+
+</pre>
+
+	<p>진달래 꽃이 피었구려</p>
+	<p>개나리 꽃이 피었네</p>
+
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+	$(function(){
+		$('#d01 ol li:nth-child(4)').css({background:'yellow',border:'2px solid red'});
+		$('#d02 ol li:nth-child(4)').css({border:'2px solid red'});
+		$('#tab01 tr td:first-child').css({background:'#f1f1f1'});
+		$('#tab01 tr td:nth-child(2)').css({background:'pink'});
+		$('#tab01 tr td:nth-child(3)').css({background:'skyblue'});
+		$('#tab01 tr:first-child td').css({background:'black',color:'white'});
+		
+	})
+</script>
+
+</head>
+<body>
+<div id="d01">
+<h2>여자에게 인기있는 남자들</h2>
+<ol>
+	<li>능력있는 남자</li>
+	<li>돈 많은 남자</li>
+	<li>잘 생긴 남자</li>
+	<li>프로그래머</li>
+</ol>
+</div>
+<div id="d02">
+<h2>남자에게 인기있는 여자들</h2>
+<ol>
+	<li>예쁜 여자</li>
+	<li>귀여운 여자</li>
+	<li>섹시한 여자</li>
+	<li>마음이 착한여자</li>
+</ol>
+</div>
+
+<br><br>
+<table border="1" id ="tab01">
+		<tr>
+			<td>이름</td>
+			<td>주소</td>
+			<td>전화번호</td>
+		</tr>
+
+		<tr>
+			<td>홍길동</td>
+			<td>대전</td>
+			<td>010-2222-3333</td>
+		</tr>
+		
+		<tr>
+			<td>진달래</td>
+			<td>서울</td>
+			<td>010-4444-5555</td>
+		</tr>
+		
+		<tr>
+			<td>개나리</td>
+			<td>부산</td>
+			<td>010-6666-7777</td>
+		</tr>
+		
+		<tr>
+			<td>무궁화</td>
+			<td>대구</td>
+			<td>010-8888-9999</td>
+		</tr>
+	
+	</table>
+	
+
+</body>
+</html>

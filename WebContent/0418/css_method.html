@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+$(function(){
+	$('img').click(function(){
+		//$(this).css('border','2px solid pink');
+		$(this).toggleClass('blueboerder');
+	})
+	/*
+	$('img').hover(function(){
+		$(this).css('border','2px solid pink');
+	})
+	*/
+	//hover이벤트 : mouseover, mouseout
+	
+	$('img').hover(function(){
+		//$(this).css('border','5px dotted red');
+		$(this).addClass('imgborder');
+	},function(){
+		//$(this).css('border','none');
+		$(this).removeClass('imgborder');
+		
+	})
+	
+	$('p').click(function(){
+		//$(this).css('font-size','2.0em');
+		//$(this).toggleClass('fontsize');
+		
+		if($(this).hasClass('fontsize')){
+			$(this).removeClass('fontsize');
+		}else{
+			$(this).addClass('fontsize');
+		}
+		
+	})
+	
+	$('p').hover(function(){
+		$(this).toggleClass('background');
+	})
+	
+})
+</script>
+<style>
+	img{
+		width : 150px;
+		height : 100px;
+	}
+	/* //클래스 정의*/
+	.imgborder{
+		border : 5px solid hotpink;
+	}
+	.blueboerder{
+		border : 5px solid blue;
+	}	
+	
+	.fontsize{
+		font-size : 2.0em;
+	}
+	.background{
+		background:lime;
+	}
+	
+	/*
+	img:hover{
+		border : 2px dotted red;
+	}
+	*/
+</style>
+</head>
+<body>
+	<img src="../images/김태리.gif">
+	<img src="../images/김태리3.gif">
+	<img src="../images/민국.gif">
+	<img src="../images/원진아.gif">
+	<img src="../images/엠마왓슨.gif">
+	<br><br>
+	1. p태그의 문자를 클릭하면 글자크기를 크게 변경하고<br>
+	다시 클릭하면 원래 크기로 돌아온다.<br>
+	
+	2. p태그의 문자에 마우스를 올려 놓으면 배경색을 변경하고 <br>
+	마우스를 내려놓으면 원래대로 돌아온다.<br>
+	<p>무궁화 꽃이 피었다</p>
+	<p>진달래 꽃이 바람에 흩날린다.</p>
+	<p>라일락 꽃의 향기가 바람에 날려 천리를 갑니다</p>
+	
+	
+</body>
+</html>
